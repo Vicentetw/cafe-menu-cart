@@ -1,0 +1,269 @@
+:root {
+    --primary: #3483fa;
+    --danger: #ff4d4f;
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* HEADER */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+/* GRID */
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+@media (min-width: 600px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .menu-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* CARD */
+.card {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+}
+
+/* CONTROLES */
+.qty-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    background: #f3f4f6;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.qty-controls button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 8px;
+    
+}
+
+/* BOTON CARRITO */
+#cart-button {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    background: black;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* OVERLAY */
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+#overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* PANEL MOBILE */
+#cart-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85%;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+#cart-panel.active {
+    transform: translateY(0);
+}
+
+/* PANEL DESKTOP */
+@media (min-width: 768px) {
+    #cart-panel {
+        top: 0;
+        right: 0;
+        left: auto;
+        width: 400px;
+        height: 100%;
+        border-radius: 0;
+        transform: translateX(100%);
+    }
+
+    #cart-panel.active {
+        transform: translateX(0);
+    }
+}
+
+/* HEADER CARRITO */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+/* ITEMS */
+#cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    background: #f9fafb;
+}
+
+.cart-item {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.cart-top {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.cart-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.cart-controls button {
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    
+    
+}
+
+.remove-btn {
+    background: var(--danger);
+    color: white;
+}
+
+/* FOOTER */
+.cart-footer {
+    padding: 16px;
+    border-top: 1px solid #eee;
+    background: white;
+}
+
+.cart-footer button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* MODAL */
+#checkout-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+#checkout-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    width: 90%;
+    max-width: 320px;
+}
+
+/* EMPTY */
+.empty-cart {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 40px;
+}
+
+/* ANIMACION */
+@keyframes shake {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.shake {
+    animation: shake 0.3s;
+}

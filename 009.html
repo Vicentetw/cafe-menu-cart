@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito Pro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="main-header">
+    <h1>☕ Menú del café</h1>
+    <button id="cart-button">
+        🛒 <span id="cart-count">0</span>
+    </button>
+</header>
+
+<main>
+    <section id="menu" class="menu-grid"></section>
+</main>
+
+<div id="overlay"></div>
+
+<aside id="cart-panel">
+    <header class="cart-header">
+        <h2>Tu carrito</h2>
+        <button id="close-cart">✖</button>
+    </header>
+
+    <div id="cart-items"></div>
+
+    <footer class="cart-footer">
+        <p>Total: <span id="cart-total">$0</span></p>
+        <button id="pay-btn">Pagar</button>
+    </footer>
+</aside>
+
+<div id="checkout-modal">
+    <div class="modal-content">
+        <h2>Pago realizado ✅</h2>
+        <p>Gracias por tu compra</p>
+        <button id="close-modal">Cerrar</button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
